@@ -1,5 +1,7 @@
 h1. WolfTags Plugin Documentation
 
+**WOLF TAGS ARE NOT CURRENTLY USABLE : IN PROCESS OF PORTING**
+
 h2. Brief
 
 Wolf tags are very similar to HTML tags. With _WolfTags Plugin_ plugin enabled, you can use some standard Wolf tags and first of all easily create own Wolf tags.
