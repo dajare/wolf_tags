@@ -2,30 +2,30 @@
 
 /**
  * Copyright 2009-2010 Bastian Harendt <b.harendt@gmail.com>
+ * Copyright 2010- David Reimer <dajare@gmail.com>
  *
- * This file is part of FrogTags Plugin.
+ * This file is part of WolfTags Plugin.
  *
- * FrogTags Plugin is free software: you can redistribute it and/or modify it
+ * WolfTags Plugin is free software: you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the Free
  * Software Foundation, either version 3 of the License, or (at your option)
  * any later version.
  *
- * FrogTags Plugin is distributed in the hope that it will be useful, but
+ * WolfTags Plugin is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
  * or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
  * more details.
  *
  * You should have received a copy of the GNU General Public License along with
- * FrogTags Plugin.  If not, see <http://www.gnu.org/licenses/>.
+ * WolfTags Plugin.  If not, see <http://www.gnu.org/licenses/>.
  *
- * FrogTags Plugin was designed for Frog CMS at version 0.9.5.
  */
 
-class StandardTags extends FrogTags {
+class StandardTags extends WolfTags {
 
 	/*
 		Puts out the title of the current page
-		@usage <f:title /> @endusage
+		@usage <w:title /> @endusage
 	*/
 	public function tag_title() {
 		return $this->page->title();
@@ -33,7 +33,7 @@ class StandardTags extends FrogTags {
 
 	/*
 		Puts out the breadcrumb of the current page
-		@usage <f:breadcrumb /> @endusage
+		@usage <w:breadcrumb /> @endusage
 	*/
 	public function tag_breadcrumb() {
 		return $this->page->breadcrumb();
@@ -48,8 +48,8 @@ class StandardTags extends FrogTags {
 		empty the current page will be used.
 
 		@usage
-			<f:link [url="..."] [HTML attributes] />
-			<f:link [url="..."] [HTML attributes]>Link-Text</f:link>
+			<w:link [url="..."] [HTML attributes] />
+			<w:link [url="..."] [HTML attributes]>Link-Text</w:link>
 		@endusage
 	*/
 	public function tag_link() {
@@ -83,7 +83,7 @@ class StandardTags extends FrogTags {
 		Puts out the breadcrumbs for the current page.
 		@arg separator Character or string that separates breadcrumbs. Default
 		is "@ &gt; @".
-		@usage <f:breadcrumbs [separator="separator_string"] /> @endusage
+		@usage <w:breadcrumbs [separator="separator_string"] /> @endusage
 	*/
 	public function tag_breadcrumbs() {
 		$separator = $this->get_argument('separator', ' &gt; ');
@@ -108,12 +108,12 @@ class StandardTags extends FrogTags {
 		@any@ so that this tag will render the containing elements if any (not
 		all as by default) of the listed parts exists.
 
-		@see f:unless_content
+		@see w:unless_content
 
 		@usage
-			> <f:if_content [part="part_name other_part"] [inherit="true|false"]>
+			> <w:if_content [part="part_name other_part"] [inherit="true|false"]>
 			>   ...
-			> </f:if_content>
+			> </w:if_content>
 		@endusage
 	*/
 	public function tag_if_content($invert = false) {
@@ -140,7 +140,7 @@ class StandardTags extends FrogTags {
 	}
 
 	/*
-		The opposite of the @f:if_content@ tag.
+		The opposite of the @w:if_content@ tag.
 	*/
 	public function tag_unless_content() {
 		return $this->tag_if_content(true);
@@ -152,14 +152,14 @@ class StandardTags extends FrogTags {
 		@body@.
 		@arg inherit Specifies that if a page does not have the specified page
 		part the tag should render the parent's page part. Default is @false@.
-		@usage <f:content [part="page_part"] [inherit="true|false"] /> @endusage
+		@usage <w:content [part="page_part"] [inherit="true|false"] /> @endusage
 	*/
 	public function tag_content() {
 		$part    = $this->get_argument('part', 'body');
 		$inherit = $this->get_argument('inherit') == 'true' ? true : false;
 
 		// get stdClass object width members 'content' and 'filter_id'
-		$content = FrogTagsHacks::get_page_content($this->page, $part, $inherit);
+		$content = WolfTagsHacks::get_page_content($this->page, $part, $inherit);
 
 		return $this->parse($content->content, $this, $content->filter_id);
 	}
@@ -167,13 +167,13 @@ class StandardTags extends FrogTags {
 	/*
 		Renders the specified snippet.
 		@arg name The name of the snippet that should be rendered.
-		@usage <f:snippet name="snippet_name" /> @endusage
+		@usage <w:snippet name="snippet_name" /> @endusage
 	*/
 	public function tag_snippet() {
 		$name = $this->require_argument('name');
 
 		// get a stdClass object with members 'content' and 'filer_id'
-		$snippet = FrogTagsHacks::get_snippet($name, $this->page);
+		$snippet = WolfTagsHacks::get_snippet($name, $this->page);
 
 		return $this->parse($snippet->content, $this, $snippet->filter_id);
 	}
@@ -184,16 +184,16 @@ class StandardTags extends FrogTags {
 		@arg file Specifies the file that should be included. The path must be
 		given relative to the public directory. Only files in the public
 		directory are allowed.
-		@usage <f:include file="filename" /> @endusage
+		@usage <w:include file="filename" /> @endusage
 	*/
 	public function tag_include() {
 		$filename = $this->require_argument('file');
-		$public   = realpath(FROG_ROOT.'/public/');
+		$public   = realpath(WOLF_ROOT.'/public/');
 		$filename = realpath($public.'/'.$filename);
 		if (substr_compare($public, $filename, 0, strlen($public)) != 0)
 			throw new Exception('Only files in the public directory are allowed to be included!');
 		$content = file_get_contents($filename);
-		$content = FrogTagsHacks::execute($content, $this->page);
+		$content = WolfTagsHacks::execute($content, $this->page);
 /*		if (ALLOW_PHP) {
 			ob_start();
 			eval('?>'.$content);
@@ -206,7 +206,7 @@ class StandardTags extends FrogTags {
 
 	/*
 		Puts out the url of the public directory.
-		@usage <f:public_url /> @endusage
+		@usage <w:public_url /> @endusage
 	*/
 	public function tag_public_url() {
 		return URL_PUBLIC . (endsWith(URL_PUBLIC, '/') ? '': '/') . 'public/';
@@ -214,7 +214,7 @@ class StandardTags extends FrogTags {
 
 	/*
 		Puts out the base url of this website.
-		@usage <f:base_url /> @endusage
+		@usage <w:base_url /> @endusage
 	*/
 	public function tag_base_url() {
 		return BASE_URL;
@@ -223,7 +223,7 @@ class StandardTags extends FrogTags {
 	/*
 		Inside this tag all page related tags refer to the page found by the @url@ argument.
 
-		@usage <f:find url="...">...</f:find> @endusage
+		@usage <w:find url="...">...</w:find> @endusage
 	*/
 	public function tag_find() {
 		$url = $this->require_argument('url');
@@ -241,8 +241,8 @@ class StandardTags extends FrogTags {
 		url. Leading and trailing delimiters can be omitted.
 		@arg flags Pattern modifiers. See <a href="http://www.php.net/manual/reference.pcre.pattern.modifiers.php">php.net</a>
 		for further details about pattern modifiers.
-		@usage <f:if_url match="pattern" [flags="..."]>...</f:if_url> @endusage
-		@see f:unless_url
+		@usage <w:if_url match="pattern" [flags="..."]>...</w:if_url> @endusage
+		@see w:unless_url
 	*/
 	public function tag_if_url($invert = false) {
 		$pattern = $this->require_argument('match');
@@ -256,17 +256,17 @@ class StandardTags extends FrogTags {
 	}
 
 	/*
-		The opposite of the @f:if_url@ tag.
+		The opposite of the @w:if_url@ tag.
 	*/
 	public function tag_unless_url() {
 		return $this->tag_if_url(true);
 	}
 
 	/*
-		Tag to iterate over a collection tag, e.g. @f:children@.
+		Tag to iterate over a collection tag, e.g. @w:children@.
 		@arg collection Specifies the collection tag name (optional).
-		@usage <f:children><f:each [collection="children"]>...</f:each></f:children> @endusage
-		@see f:children
+		@usage <w:children><w:each [collection="children"]>...</w:each></w:children> @endusage
+		@see w:children
 	*/
 	public function tag_each() {
 		$parent = $this->get_argument('collection', NULL);
@@ -300,17 +300,17 @@ class StandardTags extends FrogTags {
 		@arg status If @status@ is @all@ also hidden pages will be included.
 
 		@usage
-		> <f:children
+		> <w:children
 		>   [order="asc|desc"]
 		>   [by="position|created|published|updated"]
 		>   [offset="..."]
 		>   [limit="..."]
 		>   [status="all"]>
 		>   ...
-		> </f:children>
+		> </w:children>
 		@endusage
 
-		@see f:each
+		@see w:each
 	*/
 	public function tag_children() {
 		$order = $this->get_argument('order');
