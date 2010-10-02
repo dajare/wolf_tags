@@ -1,0 +1,14 @@
+﻿WolfTags - Change Log
+
+======
+Sigla:
++ enhancement, addition
+- bug fix
+. other development
+======
+
+0.0.1 - released 2010-??-??
+
++ included CHANGELOG file
+. Wolf rebranding: edits, and file renames
+. initial import/fork from Bastian Harendt's FrogTags <http://github.com/harendt/frog_tags>

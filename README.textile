@@ -1,16 +1,16 @@
 h1. WolfTags Plugin Documentation
 
-**WOLF TAGS ARE NOT CURRENTLY USABLE : IN PROCESS OF PORTING**
-
 h2. Brief
 
-Wolf tags are very similar to HTML tags. With _WolfTags Plugin_ plugin enabled, you can use some standard Wolf tags and first of all easily create own Wolf tags.
+Wolf tags are very similar to HTML tags, or even XML tags. With _WolfTags Plugin_ plugin enabled, you can use some standard WolfTags and first of all easily create own WolfTags.
 
 _WolfTags Plugin_ will add the same functionality to Wolf CMS as offered by "Radius tags":http://wiki.github.com/radiant/radiant/radius-tags in Radinat CMS (but with a preceding 'w:' instead of 'r:').
 
+WolfTags may be used in a Page, Snippet, or Layout.
+
 h2. Configuration
 
-To allow execution of PHP code as common in Wolf CMS add the line
+To allow execution of PHP code as common in Wolf CMS add the line:
 
 <pre>
 define(ALLOW_PHP, true);
@@ -35,11 +35,13 @@ As you can guess the tag defined above will output the current page's title.
 
 The _WolfTags Plugin_ will automatically collect all methods whose names start with @tag_@ and whose classes are derived from class @WolfTags@.
 
-The include line is required to assure that the class @WolfTags@ is defined before it is used to derive an other class from it.
+The include line is required to ensure that the class @WolfTags@ is defined before it is used to derive another class from it.
 
 h2. Using tags
 
-The above defined tag could be used inside a page as in the following example:
+WolfTags can be included on pages using either the Markdown or Textile. (And usage with Textile does not require any "notextile." markup.)
+
+The tage defined above could be used inside a page like this:
 
 <pre>
 Welcome to page <w:title />
@@ -74,7 +76,7 @@ To mark an argument as required argument you can call the method @require_argume
 
 h2. Tag content and nested tags
 
-Like HTML tags Wolf tags can have some content aswell. For example:
+Like HTML tags, Wolf tags can have some content as well. For example:
 
 <pre>
 <w:uppercase>Welcome to page <title /></w:uppercase>
@@ -97,9 +99,9 @@ public function tag_uppercase() {
 }
 </pre>
 
-To access the parent tag inside a tag definition use the member variable @$parent@. As @$parent@ is a reference any changes made to @$parent@ will affect the parent tag aswell.
+To access the parent tag inside a tag definition use the member variable @$parent@. As @$parent@ is a reference any changes made to @$parent@ will affect the parent tag as well.
 
-As shortcut nested tags can be written for example as:
+As a shortcut, nested tags can be written for example as:
 
 <pre><w:children:each status="all">...</w:children:each></pre>
 
