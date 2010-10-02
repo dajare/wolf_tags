@@ -2,27 +2,27 @@
 
 /**
  * Copyright 2009-2010 Bastian Harendt <b.harendt@gmail.com>
+ * Copyright 2010- David Reimer <dajare@gmail.com>
  *
- * This file is part of FrogTags Plugin.
+ * This file is part of WolfTags Plugin.
  *
- * FrogTags Plugin is free software: you can redistribute it and/or modify it
+ * WolfTags Plugin is free software: you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the Free
  * Software Foundation, either version 3 of the License, or (at your option)
  * any later version.
  *
- * FrogTags Plugin is distributed in the hope that it will be useful, but
+ * WolfTags Plugin is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
  * or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
  * more details.
  *
  * You should have received a copy of the GNU General Public License along with
- * FrogTags Plugin.  If not, see <http://www.gnu.org/licenses/>.
+ * WolfTags Plugin.  If not, see <http://www.gnu.org/licenses/>.
  *
- * FrogTags Plugin was designed for Frog CMS at version 0.9.5.
  */
 
-	$documentation = new FrogTagsDocumentation();
+	$documentation = new WolfTagsDocumentation();
 
 ?>
-<h1>Available Frog Tags</h1>
-<div class="frogtags taglist"><?php echo $documentation->html(); ?></div>
+<h1>Available Wolf Tags</h1>
+<div class="wolftags taglist"><?php echo $documentation->html(); ?></div>
