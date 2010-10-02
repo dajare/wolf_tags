@@ -23,4 +23,4 @@
 
 ?>
 <p class="button"><a href="<?php echo get_url('plugin/wolf_tags/documentation');  ?>"><img src="<?php echo get_url('images/page.png') ?>" align="middle" alt="" /> Documentation</a></p>
-<p class="button"><a href="<?php echo get_url('plugin/wolf_tags/available_tags'); ?>"><img src="<?php echo get_url('images/page.png') ?>" align="middle" alt="" /> Available Frog Tags</a></p>
+<p class="button"><a href="<?php echo get_url('plugin/wolf_tags/available_tags'); ?>"><img src="<?php echo get_url('images/page.png') ?>" align="middle" alt="" /> Available Wolf Tags</a></p>
