@@ -23,6 +23,12 @@
 	margin: .5em 0;
 }
 
+.wolftags ul li {
+	padding-left: 1em;
+	list-style-type: disc;
+	list-style-position: inside;
+}
+
 .taglist p,
 .taglist dl {
 	margin-left: 1.5em;

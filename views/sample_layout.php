@@ -21,7 +21,11 @@
  *
  */
 
+	$filename = dirname(__FILE__) . '/../opt/SAMPLE_LAYOUT.textile';
+	$documentation = file_get_contents($filename);
+	if ($filter = Filter::get('textile'))
+		echo '<div class="wolftags">' . $filter->apply($documentation) . '</div>';
+	else
+		echo '<pre>' . htmlspecialchars($documentation) .'</pre>';
+
 ?>
-<p class="button"><a href="<?php echo get_url('plugin/wolf_tags/documentation');  ?>"><img src="<?php echo get_url('images/page.png') ?>" align="middle" alt="" /> Documentation</a></p>
-<p class="button"><a href="<?php echo get_url('plugin/wolf_tags/available_tags'); ?>"><img src="<?php echo get_url('images/page.png') ?>" align="middle" alt="" /> Available Wolf Tags</a></p>
-<p class="button"><a href="<?php echo get_url('plugin/wolf_tags/sample_layout'); ?>"><img src="<?php echo get_url('images/page.png') ?>" align="middle" alt="" /> Sample Layout</a></p>

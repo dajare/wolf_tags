@@ -1,0 +1,96 @@
+h1. WolfTags Layout
+
+h2. Introduction
+
+Once WolfTags has been installed, you will need a Layout which makes use of the WolfTags system rather than the PHP-constructed layouts typically used in Wolf.
+
+A "bare-bones" sample layout is provided below which offers a simple "plug-and-play" starting point. To use it:
+
+* copy the code below;
+* go to the *Layout* tab and create a new Layout, using the name "WolfTags", and having a content type of "text/html";
+* paste the code into the body;
+* click *Save*.
+
+Then, open the Home Page for editing, click on the "Settings" tab, and select "WolfTags" from the Layout drop-down menu. Click *Save*.
+
+Your Wolf site will now make use of the new layout, and the WolfTags system.
+
+h2. The Layout
+
+bc.. <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd"> 
+<html> 
+<head> 
+<title><w:title /> :: WolfTags Layout</title>
+
+<!-- Thanks to YUI Dev Network for resources like this! http://developer.yahoo.com/yui/2/ -->
+<link rel="stylesheet" type="text/css" href="http://developer.yahoo.com/yui/build/reset/reset.css"> 
+<link rel="stylesheet" type="text/css" href="http://developer.yahoo.com/yui/build/fonts/fonts.css"> 
+<link rel="stylesheet" type="text/css" href="http://developer.yahoo.com/yui/build/grids/grids.css"> 
+<link rel="stylesheet" type="text/css" href="http://developer.yahoo.com/yui/build/base/base.css"> 
+
+<style>
+#nav {padding:10px;background-color:#eee;}
+#crumbs {padding-top:10px 0;font-size:smaller;color:#999;}
+#ft {border-top:3px solid #eee;margin-top:16px;padding-top:10px;text-align:center;}
+.info {font-size:smaller;color:#999;}
+</style>
+
+</head> 
+ 
+<body>
+<div id="doc2" class="yui-t5">
+	<div id="hd"> 
+	<h1>WolfTags Layout</h1> 
+
+<p id="nav">
+<w:link url="/" /> 
+<w:find url="/">
+ <w:children:each>
+ | <w:link />
+ </w:children:each>
+</w:find>
+</p>
+
+<p id="crumbs">You are here: <w:breadcrumbs /></p>
+ 
+	</div><!-- / #hd --> 
+
+	<div id="bd"> 
+	<div id="yui-main"> 
+	<div class="yui-b"> 
+			
+	<h2><w:title /></h2> 
+
+<w:content />
+ 
+	</div> 
+	</div><!-- / #yui-main --> 
+	
+	<div class="yui-b"><!-- = sidebar --> 
+
+<w:content part="sidebar" inherit="true" />
+
+<w:unless_url match="\/$"><!-- regex matches null-after-slash = Home Page -->
+
+	<h2>Subnav</h2> 
+<ul>
+<w:children:each>
+<li><w:link /></li>
+</w:children:each>
+</ul>
+
+</w:unless_url>
+
+	</div><!-- / "sidebar" -->
+	</div><!-- / #bd --> 
+
+	<div id="ft"> 
+	<a href="http://www.wolfcms.org/">Wolf CMS</a> Inside
+	</div><!-- / #ft --> 
+ 
+</div> 
+ 
+</body> 
+</html> 
+
+

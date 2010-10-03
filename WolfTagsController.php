@@ -45,6 +45,10 @@ if (!defined('WolfTagsControllerIncluded')) {
 			$this->display('wolf_tags/views/available_tags');
 		}
 
+		public function sample_layout() {
+			$this->display('wolf_tags/views/sample_layout');
+		}
+
 		public function error_page($title, $message) {
 			$this->setLayout(false);
 			$this->display('wolf_tags/views/error_page', array('title' => $title, 'message' => $message), true);
