@@ -41,7 +41,7 @@ h2. Using tags
 
 WolfTags can be included on pages which use either the Textile or Markdown text filter. (And usage with Textile does not require any "notextile." markup.)
 
-The tage defined above could be used inside a page like this:
+The WolfTag defined above could be used inside a page like this:
 
 <pre>
 Welcome to page <w:title />
