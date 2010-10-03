@@ -6,17 +6,17 @@ Wolf tags are very similar to HTML tags, or even XML tags. With _WolfTags Plugin
 
 _WolfTags Plugin_ will add the same functionality to Wolf CMS as offered by "Radius tags":http://wiki.github.com/radiant/radiant/radius-tags in Radiant CMS (but with a preceding 'w:' instead of 'r:').
 
-WolfTags may be used in a Page, Snippet, or Layout.
+WolfTags may be used in a Page, Snippet, or Layout. See the Sample Layout (included) for examples of usage.
 
 h2. Configuration
 
-To allow execution of PHP code as common in Wolf CMS add the line:
+*Optional*: To allow execution of PHP code as common in Wolf CMS add the line:
 
 <pre>
 define(ALLOW_PHP, true);
 </pre>
 
-to @WOLF_ROOT/config.php@. (As this file is normally not writable you have to give yourself write permission to that file first!)
+to @WOLF_ROOT/config.php@. (As this file is normally not writable you have to give yourself write permission to that file first!) Otherwise, _only_ WolfTags will be available for dynamic functions in the backend.
 
 h2. Defining Tags
 
