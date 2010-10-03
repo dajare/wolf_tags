@@ -2,11 +2,11 @@ h1. WolfTags Plugin Documentation
 
 h2. Brief
 
-Wolf tags are very similar to HTML tags, or even XML tags. With _WolfTags Plugin_ plugin enabled, you can use some standard WolfTags and first of all easily create own WolfTags.
+Wolf tags are very similar to XHTML or XML tags. With _WolfTags Plugin_ plugin enabled, you can use some standard WolfTags and even create more of your own.
 
-_WolfTags Plugin_ will add the same functionality to Wolf CMS as offered by "Radius tags":http://wiki.github.com/radiant/radiant/radius-tags in Radiant CMS (but with a preceding 'w:' instead of 'r:').
+_WolfTags Plugin_ will add the a similar functionality to Wolf CMS as that offered by "Radius tags":http://wiki.github.com/radiant/radiant/radius-tags in Radiant CMS (but with a preceding 'w:' instead of 'r:').
 
-WolfTags may be used in a Page, Snippet, or Layout. See the Sample Layout (included) for examples of usage.
+WolfTags may be used in a Page, Snippet, or Layout. See the Sample Layout (included) for further examples of usage.
 
 h2. Configuration
 
@@ -39,7 +39,7 @@ The include line is required to ensure that the class @WolfTags@ is defined befo
 
 h2. Using tags
 
-WolfTags can be included on pages using either the Markdown or Textile. (And usage with Textile does not require any "notextile." markup.)
+WolfTags can be included on pages which use either the Textile or Markdown text filter. (And usage with Textile does not require any "notextile." markup.)
 
 The tage defined above could be used inside a page like this:
 
@@ -47,7 +47,7 @@ The tage defined above could be used inside a page like this:
 Welcome to page <w:title />
 </pre>
 
-The following is allowed aswell:
+The following is also allowed:
 
 <pre>
 Welcome to page <w:title></w:title>
@@ -61,7 +61,7 @@ It is possible to pass arguments to a tag in the usual format @argument="value"@
 Welcome to page <w:title uppercase="yes" />
 </pre>
 
-The passed arguments can be accessed inside a tag definition using the array @$args@. For example:
+The arguments passed can be accessed inside a tag definition using the array @$args@. For example:
 
 <pre>
 public function tag_title() {
@@ -72,14 +72,14 @@ public function tag_title() {
 }
 </pre>
 
-To mark an argument as required argument you can call the method @require_argument()@ inside the tag definition. This method will return the required argument's value aswell (or throw an exception if the argument has not been passed).
+To mark an argument as _required_ you can call the method @require_argument()@ inside the tag definition. This method will return the required argument's value as well (or throw an exception if the argument has not been passed).
 
 h2. Tag content and nested tags
 
-Like HTML tags, Wolf tags can have some content as well. For example:
+Like HTML tags, Wolf tags can wrap around content as well. For example:
 
 <pre>
-<w:uppercase>Welcome to page <title /></w:uppercase>
+<w:uppercase>Welcome to page <w:title /></w:uppercase>
 </pre>
 
 The content can be accessed inside a tag definition using the member variable @$content@. To parse the content and get the parsed result use the method @expand()@. For example:
