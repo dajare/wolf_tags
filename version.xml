@@ -3,6 +3,6 @@
 	<wolf-plugin>
 		<id>wolf_tags</id>
 		<version>0.0.1</version>
-		<status>unstable</status>
+		<status>stable</status>
 	</wolf-plugin>
 </wolf-plugins>
