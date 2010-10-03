@@ -71,14 +71,14 @@ bc.. <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/htm
 <w:content part="sidebar" inherit="true" />
 
 <w:unless_url match="\/$"><!-- regex matches null-after-slash = Home Page -->
-
-	<h2>Subnav</h2> 
-<ul>
-<w:children:each>
-<li><w:link /></li>
-</w:children:each>
-</ul>
-
+<w:if_children>
+	<h2>Sub-menu</h2>
+	<ul>
+	<w:children:each>
+		<li><w:link /></li>
+	</w:children:each>
+	</ul>
+</w:if_children>
 </w:unless_url>
 
 	</div><!-- / "sidebar" -->

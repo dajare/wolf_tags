@@ -263,6 +263,27 @@ class StandardTags extends WolfTags {
 	}
 
 	/*
+		Renders the containing elements if the current page is the
+		parent of child pages. Takes no arguments.
+		@usage <w:if_children>...</w:if_children> @endusage
+		@see w:unless_children
+	*/
+	public function tag_if_children() {
+		$kids = count($this->page->children());
+		if ($kids != 0) 
+			return $this->expand();
+	}
+
+	/*
+		The opposite of the @w:if_children@ tag.
+	*/
+	public function tag_unless_children() {
+		$kids = count($this->page->children());
+		if ($kids == 0) 
+			return $this->expand();
+	}
+
+	/*
 		Tag to iterate over a collection tag, e.g. @w:children@.
 		@arg collection Specifies the collection tag name (optional).
 		@usage <w:children><w:each [collection="children"]>...</w:each></w:children> @endusage

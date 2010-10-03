@@ -7,6 +7,10 @@ Sigla:
 . other development
 ======
 
+0.0.2 - in development
+
++ added "if_children/unless_children" tags
+
 0.0.1 - released 2010-10-03
 
 + added sample layout to demonstrate usage
