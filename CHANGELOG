@@ -7,8 +7,9 @@ Sigla:
 . other development
 ======
 
-0.0.1 - released 2010-??-??
+0.0.1 - released 2010-10-03
 
++ added sample layout to demonstrate usage
 + included CHANGELOG file
 . Wolf rebranding: edits, and file renames
 . initial import/fork from Bastian Harendt's FrogTags <http://github.com/harendt/frog_tags>
