@@ -113,7 +113,7 @@ class WolfTags {
 	/**
 	 * This method can be used to simply run a tag parser inside of a tag
 	 * definition. If a filter id is given the specified filter will be applied
-	 * aswell.
+	 * as well.
 	 */
 	protected function parse($string, &$parent = NULL, $filter_id = '', $defaultArgs = array()) {
 		if (!empty($string)) {

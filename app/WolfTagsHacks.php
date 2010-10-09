@@ -145,7 +145,7 @@ class WolfTagsHacks {
 	 */
 	public static function execute($content, $page) {
 		if (ALLOW_PHP) {
-			// The PHP content is evaluted by Page::content(). So it is
+			// The PHP content is evaluated by Page::content(). So it is
 			// possible to access $page within the content using $this as
 			// common in Wolf CMS.
 			$copy = clone $page;

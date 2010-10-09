@@ -58,7 +58,7 @@ class WolfTagsParser {
 	 *
 	 * The array $defaultArgs can be used the set default arguments. These
 	 * values will be overwritten if they are passed in the tag reference
-	 * aswell.
+	 * as well.
 	 */
 	public function parse($string, &$parent = NULL, $defaultArgs = array()) {
 
