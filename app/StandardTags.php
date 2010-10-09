@@ -99,6 +99,28 @@ class StandardTags extends WolfTags {
 	}
 
 	/*
+		Returns the date on which the current page was created, or optionally the updated or published date.
+
+		@arg format Create custom formatting based on PHP's strftime() function. See the <a href="http://php.net/strftime">PHP Manual</a> for details. Default is "@%a, %e %b %Y@" = Sun, 3 Oct 2010
+		@arg when Specifies which date to return; valid options are "created", "published", or "updated".
+
+		@usage <w:date [format="..."] [when="created|published|updated"] /> @endusage
+	*/
+	public function tag_date() {
+		$format = $this->get_argument('format');
+		if (empty($format))
+			$format = '%a, %e %b %Y';
+
+		$when = $this->get_argument('when');
+		if (empty($when))
+			$when = 'created';
+		if (!in_array($when, array("created", "published", "updated")))
+			$when = 'created';
+
+		return $this->page->date($format, $when);
+	}
+
+	/*
 		Renders the containing elements if all of the listed page parts exist.
 
 		@arg part A list separated by spaces of page parts. Default is @body@.
@@ -286,7 +308,7 @@ class StandardTags extends WolfTags {
 	/*
 		Tag to iterate over a collection tag, e.g. @w:children@.
 		@arg collection Specifies the collection tag name (optional).
-		@usage <w:children><w:each [collection="children"]>...</w:each></w:children> @endusage
+		@usage <w:children><w:each [collection="name"]>...</w:each></w:children> @endusage
 		@see w:children
 	*/
 	public function tag_each() {
