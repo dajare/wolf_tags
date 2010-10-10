@@ -24,6 +24,14 @@
 class StandardTags extends WolfTags {
 
 	/*
+		Returns the author of the current page
+		@usage <w:author /> @endusage
+	*/
+	public function tag_author() {
+		return $this->page->author();
+	}
+
+	/*
 		Puts out the title of the current page
 		@usage <w:title /> @endusage
 	*/
