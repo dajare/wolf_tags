@@ -35,7 +35,7 @@ if (!defined('WolfTagsPluginIncluded')) {
 		'license'     => 'GPL3',
 		'author'      => 'Bastian Harendt, David Reimer',
 		'website'     => 'http://github.com/dajare/wolf_tags/',
-		'update_url'  => 'http://github.com/dajare/wolf_tags/raw/master/version.xml',
+		'update_url'  => 'http://subversion.assembla.com/svn/wolf_tools/trunk/xml/plugin_versions.xml',
 		'require_wolf_version' => '0.5.5'
 	));
 
